@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="gopholler-logo.svg" alt="Gopholler Logo" width="200">
+</p>
+
 # Gopholler
 
 [![Go](https://github.com/Its-donkey/gopholler/actions/workflows/ci.yml/badge.svg)](https://github.com/Its-donkey/gopholler/actions/workflows/ci.yml)

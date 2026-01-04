@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="gopherBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#67D4E4"/>
+      <stop offset="100%" style="stop-color:#00ADD8"/>
+    </linearGradient>
+    <linearGradient id="megaphoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6B35"/>
+      <stop offset="100%" style="stop-color:#FF8C42"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle - bounds: x=15-385, y=15-385 -->
+  <circle cx="200" cy="200" r="185" fill="#1a1a2e"/>
+  
+  <!-- Gopher body -->
+  <ellipse cx="120" cy="230" rx="55" ry="70" fill="url(#gopherBlue)"/>
+  
+  <!-- Gopher head -->
+  <circle cx="120" cy="150" r="50" fill="url(#gopherBlue)"/>
+  
+  <!-- Ears - symmetrical around x=120 -->
+  <ellipse cx="82" cy="112" rx="12" ry="16" fill="url(#gopherBlue)"/>
+  <ellipse cx="158" cy="112" rx="12" ry="16" fill="url(#gopherBlue)"/>
+  <ellipse cx="82" cy="112" rx="6" ry="9" fill="#FFCBA4"/>
+  <ellipse cx="158" cy="112" rx="6" ry="9" fill="#FFCBA4"/>
+  
+  <!-- Eyes - symmetrical around x=120 -->
+  <ellipse cx="102" cy="142" rx="14" ry="17" fill="white"/>
+  <ellipse cx="138" cy="142" rx="14" ry="17" fill="white"/>
+  <circle cx="105" cy="144" r="8" fill="#1a1a2e"/>
+  <circle cx="141" cy="144" r="8" fill="#1a1a2e"/>
+  <circle cx="107" cy="141" r="2.5" fill="white"/>
+  <circle cx="143" cy="141" r="2.5" fill="white"/>
+  
+  <!-- Nose -->
+  <ellipse cx="120" cy="162" rx="8" ry="5" fill="#2a2a4e"/>
+  
+  <!-- Mouth - open wide hollering -->
+  <ellipse cx="120" cy="178" rx="16" ry="12" fill="#2a2a4e"/>
+  <ellipse cx="120" cy="176" rx="11" ry="7" fill="#FF6B6B"/>
+  
+  <!-- Teeth -->
+  <rect x="114" y="171" width="5" height="7" rx="1" fill="white"/>
+  <rect x="121" y="171" width="5" height="7" rx="1" fill="white"/>
+  
+  <!-- Arm holding megaphone -->
+  <ellipse cx="168" cy="185" rx="15" ry="12" fill="url(#gopherBlue)"/>
+  
+  <!-- Megaphone handle -->
+  <rect x="165" y="178" width="18" height="14" rx="3" fill="#555"/>
+  
+  <!-- Megaphone cone -->
+  <polygon points="180,172 290,130 290,240 180,198" fill="url(#megaphoneGrad)"/>
+  <ellipse cx="290" cy="185" rx="8" ry="55" fill="#FF8C42"/>
+  <ellipse cx="290" cy="185" rx="5" ry="44" fill="#2a2a2e"/>
+  
+  <!-- Sound waves - centered at y=185, staying inside x=385 -->
+  <g stroke="#FF6B35" stroke-width="3.5" fill="none" opacity="0.9">
+    <path d="M 305 155 Q 318 185 305 215" stroke-linecap="round"/>
+    <path d="M 320 135 Q 338 185 320 235" stroke-linecap="round"/>
+    <path d="M 335 115 Q 358 185 335 255" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="340" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="28" font-weight="bold" fill="white">GOPHOLLER</text>
+</svg>
