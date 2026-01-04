@@ -125,6 +125,7 @@ func (c *Client) request(ctx context.Context, method, path string, body interfac
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Accept-Charset", "utf-8")
+	req.Header.Set("Content-Language", "en-au")
 	req.Header.Set("Telstra-api-version", "3.x")
 
 	resp, err := c.httpClient.Do(req)

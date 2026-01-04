@@ -28,3 +28,6 @@ Thumbs.db
 
 # Reference files
 Reference/
+
+# Local test commands
+cmd/
