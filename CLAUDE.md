@@ -31,6 +31,8 @@ The package is organized by API domain:
 | `virtual_numbers.go` | Manage virtual numbers and opt-outs |
 | `free_trial.go` | Free trial number management |
 | `reports.go` | Report generation and retrieval |
+| `sender_names.go` | Get approved sender names (paid accounts) |
+| `logs.go` | API call logs |
 | `health.go` | Health check endpoint |
 
 ## Key Patterns
