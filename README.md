@@ -5,7 +5,7 @@ A Go wrapper for the [Telstra Messaging API v3.x](https://dev.telstra.com/apis/m
 ## Installation
 
 ```bash
-go get github.com/yourusername/gopholler
+go get github.com/Its-donkey/gopholler
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ import (
     "fmt"
     "log"
 
-    "gopholler"
+    "github.com/Its-donkey/gopholler"
 )
 
 func main() {
