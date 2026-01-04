@@ -85,6 +85,8 @@ import "errors"
 msg, err := client.SendMessage(ctx, req)
 if err != nil {
     switch {
+    case errors.Is(err, gopholler.ErrInvalidMobileNumber):
+        // Invalid or non-mobile phone number
     case errors.Is(err, gopholler.ErrAuthentication):
         // Invalid credentials or expired token
     case errors.Is(err, gopholler.ErrRateLimit):
@@ -112,6 +114,45 @@ if errors.As(err, &apiErrs) {
         fmt.Printf("Code: %s, Issue: %s, Suggested: %s\n",
             e.Code, e.Issue, e.SuggestedAction)
     }
+}
+```
+
+## Phone Number Validation
+
+`SendMessage` automatically validates that recipient numbers are valid mobile numbers. The library supports 180+ countries with known mobile prefixes.
+
+```go
+// Valid formats
+client.SendMessage(ctx, gopholler.SendMessageRequest{
+    To: "0412345678",        // Australian domestic
+    // ...
+})
+
+client.SendMessage(ctx, gopholler.SendMessageRequest{
+    To: "+61412345678",      // Australian international
+    // ...
+})
+
+client.SendMessage(ctx, gopholler.SendMessageRequest{
+    To: "+447911123456",     // UK mobile
+    // ...
+})
+
+// Invalid numbers return ErrInvalidMobileNumber
+msg, err := client.SendMessage(ctx, gopholler.SendMessageRequest{
+    To: "0212345678",        // Australian landline - rejected
+    // ...
+})
+if errors.Is(err, gopholler.ErrInvalidMobileNumber) {
+    // Handle invalid number
+}
+```
+
+You can also validate numbers directly:
+
+```go
+if gopholler.IsValidMobileNumber("+61412345678") {
+    // Valid mobile number
 }
 ```
 

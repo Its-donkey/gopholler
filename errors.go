@@ -7,13 +7,14 @@ import (
 
 // Sentinel errors for use with errors.Is()
 var (
-	ErrAuthentication = errors.New("authentication failed")
-	ErrRateLimit      = errors.New("rate limit exceeded")
-	ErrNotFound       = errors.New("resource not found")
-	ErrBadRequest     = errors.New("bad request")
-	ErrForbidden      = errors.New("forbidden")
-	ErrPaymentRequired = errors.New("payment required")
-	ErrServer         = errors.New("server error")
+	ErrAuthentication      = errors.New("authentication failed")
+	ErrRateLimit           = errors.New("rate limit exceeded")
+	ErrNotFound            = errors.New("resource not found")
+	ErrBadRequest          = errors.New("bad request")
+	ErrForbidden           = errors.New("forbidden")
+	ErrPaymentRequired     = errors.New("payment required")
+	ErrServer              = errors.New("server error")
+	ErrInvalidMobileNumber = errors.New("invalid mobile number")
 )
 
 // APIError represents an error returned by the Telstra Messaging API.

@@ -23,9 +23,9 @@ const (
 
 // Multimedia represents multimedia content for sending MMS.
 type Multimedia struct {
-	Type     string `json:"type"`     // e.g., "image/jpeg", "audio/mp3"
+	Type     string `json:"type"` // e.g., "image/jpeg", "audio/mp3"
 	FileName string `json:"fileName"`
-	Payload  string `json:"payload"`  // Base64 encoded content
+	Payload  string `json:"payload"` // Base64 encoded content
 }
 
 // MultimediaGet represents multimedia content in a received message.
@@ -36,22 +36,22 @@ type MultimediaGet struct {
 
 // SendMessageRequest represents the request body for sending a message.
 type SendMessageRequest struct {
-	To                   interface{} `json:"to"`                             // string or []string
-	From                 string      `json:"from"`
-	MessageContent       string      `json:"messageContent,omitempty"`
+	To                   interface{}  `json:"to"` // string or []string
+	From                 string       `json:"from"`
+	MessageContent       string       `json:"messageContent,omitempty"`
 	Multimedia           []Multimedia `json:"multimedia,omitempty"`
-	RetryTimeout         int         `json:"retryTimeout,omitempty"`         // 10-1440 minutes
-	ScheduleSend         *time.Time  `json:"scheduleSend,omitempty"`
-	DeliveryNotification bool        `json:"deliveryNotification,omitempty"`
-	StatusCallbackUrl    string      `json:"statusCallbackUrl,omitempty"`
-	Tags                 []string    `json:"tags,omitempty"`
+	RetryTimeout         int          `json:"retryTimeout,omitempty"` // 10-1440 minutes
+	ScheduleSend         *time.Time   `json:"scheduleSend,omitempty"`
+	DeliveryNotification bool         `json:"deliveryNotification,omitempty"`
+	StatusCallbackUrl    string       `json:"statusCallbackUrl,omitempty"`
+	Tags                 []string     `json:"tags,omitempty"`
 }
 
 // MessageSent represents the response after sending a message.
 type MessageSent struct {
 	MessageId            interface{}     `json:"messageId"` // string or []string for bulk sends
 	Status               MessageStatus   `json:"status"`
-	To                   interface{}     `json:"to"`        // string or []string
+	To                   interface{}     `json:"to"` // string or []string
 	From                 string          `json:"from"`
 	MessageContent       string          `json:"messageContent,omitempty"`
 	Multimedia           []MultimediaGet `json:"multimedia,omitempty"`
@@ -113,11 +113,11 @@ type MessageUpdate struct {
 
 // GetMessagesOptions represents options for listing messages.
 type GetMessagesOptions struct {
-	Limit     int              `url:"limit,omitempty"`     // 1-50, default 10
+	Limit     int              `url:"limit,omitempty"` // 1-50, default 10
 	Offset    int              `url:"offset,omitempty"`
 	Direction MessageDirection `url:"direction,omitempty"`
 	Status    MessageStatus    `url:"status,omitempty"`
-	Filter    string           `url:"filter,omitempty"`    // Filter by tags
+	Filter    string           `url:"filter,omitempty"` // Filter by tags
 	Reverse   bool             `url:"reverse,omitempty"`
 	StartTime *time.Time       `url:"startTime,omitempty"`
 	EndTime   *time.Time       `url:"endTime,omitempty"`
@@ -211,8 +211,8 @@ type ReportsResponse struct {
 
 // CreateMessagesReportRequest represents the request to create a messages report.
 type CreateMessagesReportRequest struct {
-	StartDate         string `json:"startDate"`                   // YYYY-MM-DD
-	EndDate           string `json:"endDate"`                     // YYYY-MM-DD
+	StartDate         string `json:"startDate"` // YYYY-MM-DD
+	EndDate           string `json:"endDate"`   // YYYY-MM-DD
 	ReportCallbackUrl string `json:"reportCallbackUrl,omitempty"`
 	Filter            string `json:"filter,omitempty"`
 }
@@ -226,7 +226,7 @@ type ReportCreated struct {
 
 // ListOptions represents common options for list endpoints.
 type ListOptions struct {
-	Limit  int    `url:"limit,omitempty"`  // 1-50
+	Limit  int    `url:"limit,omitempty"` // 1-50
 	Offset int    `url:"offset,omitempty"`
 	Filter string `url:"filter,omitempty"`
 }

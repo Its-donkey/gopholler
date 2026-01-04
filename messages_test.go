@@ -88,7 +88,75 @@ func TestSendMessage(t *testing.T) {
 	}
 }
 
-func TestSendMessage_Error(t *testing.T) {
+func TestSendMessage_InvalidMobile(t *testing.T) {
+	tests := []struct {
+		name    string
+		to      interface{}
+		wantErr bool
+	}{
+		// Invalid numbers
+		{"invalid string", "invalid", true},
+		{"landline AU", "0212345678", true},
+		{"too short", "1234567", true},
+		{"no mobile prefix", "+61112345678", true},
+
+		// Valid Australian numbers
+		{"valid AU domestic", "0412345678", false},
+		{"valid AU international", "+61412345678", false},
+		{"valid AU with spaces", "0412 345 678", false},
+		{"valid AU with dashes", "0412-345-678", false},
+
+		// Valid international numbers
+		{"valid UK mobile", "+447911123456", false},
+		{"valid US mobile", "+15551234567", false},
+		{"valid Germany mobile", "+4915123456789", false},
+		{"valid France mobile", "+33612345678", false},
+		{"valid NZ mobile", "+6421123456", false},
+		{"valid Japan mobile", "+818012345678", false},
+
+		// Invalid international numbers (non-mobile prefixes)
+		{"UK landline", "+442012345678", true},
+		{"Germany landline", "+493012345678", true},
+
+		// Slices
+		{"slice with invalid", []string{"0412345678", "invalid"}, true},
+		{"slice all valid", []string{"0412345678", "+61498765432"}, false},
+		{"slice mixed countries", []string{"+61412345678", "+447911123456"}, false},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			server, client := testServer(t, func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(http.StatusCreated)
+				json.NewEncoder(w).Encode(MessageSent{
+					MessageId: "msg-123",
+					Status:    MessageStatusQueued,
+				})
+			})
+			defer server.Close()
+
+			_, err := client.SendMessage(context.Background(), SendMessageRequest{
+				To:   tt.to,
+				From: "0401234567",
+			})
+
+			if tt.wantErr {
+				if err == nil {
+					t.Error("expected error, got nil")
+				} else if !errors.Is(err, ErrInvalidMobileNumber) {
+					t.Errorf("expected ErrInvalidMobileNumber, got %v", err)
+				}
+			} else {
+				if err != nil {
+					t.Errorf("unexpected error: %v", err)
+				}
+			}
+		})
+	}
+}
+
+func TestSendMessage_APIError(t *testing.T) {
 	server, client := testServer(t, func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -106,7 +174,7 @@ func TestSendMessage_Error(t *testing.T) {
 	defer server.Close()
 
 	_, err := client.SendMessage(context.Background(), SendMessageRequest{
-		To:   "invalid",
+		To:   "0412345678", // Valid mobile format to reach the API
 		From: "0401234567",
 	})
 
