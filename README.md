@@ -1,5 +1,10 @@
 # Gopholler
 
+[![Go](https://github.com/Its-donkey/gopholler/actions/workflows/ci.yml/badge.svg)](https://github.com/Its-donkey/gopholler/actions/workflows/ci.yml)
+[![Coverage](https://img.shields.io/badge/coverage-88.6%25-brightgreen)](https://github.com/Its-donkey/gopholler)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Its-donkey/gopholler)](https://goreportcard.com/report/github.com/Its-donkey/gopholler)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 A Go wrapper for the [Telstra Messaging API v3.x](https://dev.telstra.com/apis/messaging-api).
 
 ## Installation
