@@ -242,3 +242,22 @@ type OAuth2Token struct {
 	TokenType   string `json:"token_type"`
 	ExpiresIn   string `json:"expires_in"`
 }
+
+// Log represents an API call log entry.
+type Log struct {
+	Timestamp  *time.Time `json:"timestamp,omitempty"`
+	Value      string     `json:"value,omitempty"`
+	StatusCode int        `json:"statusCode,omitempty"`
+}
+
+// LogsResponse represents the response for listing logs.
+type LogsResponse struct {
+	Logs []Log `json:"logs,omitempty"`
+}
+
+// GetLogsOptions represents options for listing logs.
+type GetLogsOptions struct {
+	StartDate string `url:"startDate,omitempty"` // ISO 8601 format
+	EndDate   string `url:"endDate,omitempty"`   // ISO 8601 format
+	Filter    string `url:"filter,omitempty"`    // Filter by date or resource
+}

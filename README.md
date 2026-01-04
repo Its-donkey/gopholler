@@ -62,6 +62,8 @@ func main() {
 | **Virtual Numbers** | `GetVirtualNumbers`, `AssignVirtualNumber`, `GetVirtualNumber`, `UpdateVirtualNumber`, `DeleteVirtualNumber`, `GetVirtualNumberOptouts` |
 | **Free Trial Numbers** | `GetFreeTrialNumbers`, `AddFreeTrialNumbers` |
 | **Reports** | `GetReports`, `GetReport`, `CreateMessagesReport` |
+| **Sender Names** | `GetSenderNames` |
+| **Logs** | `GetLogs` |
 | **Health** | `HealthCheck` |
 
 ## Error Handling
