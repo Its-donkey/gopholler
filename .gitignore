@@ -31,3 +31,6 @@ Reference/
 
 # Local test commands
 cmd/
+
+# Claude Code
+CLAUDE.md
